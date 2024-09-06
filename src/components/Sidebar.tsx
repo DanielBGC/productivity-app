@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
-import { FaBars, FaHome, FaUser, FaCog } from 'react-icons/fa'; // Importar ícones necessários
+import { FaBars, FaHome, FaUser, FaCog } from 'react-icons/fa';
+import NavItem from './NavItem';
 
 const Sidebar = ({
   isOpen,
@@ -24,36 +24,21 @@ const Sidebar = ({
           ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}
       >
         <ul className="nav flex-col lg:flex lg:space-y-8 mt-10">
-          <li className="nav-item text-md hover:text-xl hover:font-bold hover:text-blue-700 transition-all">
-            <Link
-              to="/"
-              className="flex items-center no-underline"
-              style={{ display: 'flex', alignItems: 'center' }}
-            >
-              <FaHome className="mr-2" />
-              Dashboard
-            </Link>
-          </li>
-          <li className="nav-item text-md hover:text-xl hover:font-bold hover:text-blue-700 transition-all">
-            <Link
-              to="/profile"
-              className="flex items-center no-underline"
-              style={{ display: 'flex', alignItems: 'center' }}
-            >
-              <FaUser className="mr-2" />
-              Profile
-            </Link>
-          </li>
-          <li className="nav-item text-md hover:text-xl hover:font-bold hover:text-blue-700 transition-all">
-            <Link
-              to="/settings"
-              className="flex items-center no-underline"
-              style={{ display: 'flex', alignItems: 'center' }}
-            >
-              <FaCog className="mr-2" />
-              Settings
-            </Link>
-          </li>
+          <NavItem
+            to="/"
+            icon={<FaHome className="mr-2" />}
+            label="Dashboard"
+          />
+          <NavItem
+            to="/profile"
+            icon={<FaUser className="mr-2" />}
+            label="Profile"
+          />
+          <NavItem
+            to="/settings"
+            icon={<FaCog className="mr-2" />}
+            label="Settings"
+          />
         </ul>
       </div>
     </>
