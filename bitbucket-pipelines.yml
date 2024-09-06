@@ -1,13 +1,22 @@
 image: node:20.17
 
 pipelines:
-  default:
-    - step:
-        name: Build and Deploy
-        caches:
-          - node
-        script:
-          - npm install
-          - npm run build
-          - npm install -g vercel
-          - vercel --prod --token $VERCEL_TOKEN
+  branches:
+    main:
+      - step:
+          name: Install and Build
+          caches:
+            - node
+          script:
+            - npm install
+            - npm run build
+      - step:
+          name: Install Vercel CLI and Pull Vercel Environment Information
+          script:
+            - npm install --global vercel
+            - vercel pull --yes --environment=production --token=$VERCEL_TOKEN
+      - step:
+          name: Build and Deploy to Vercel
+          script:
+            - vercel build --prod --token=$VERCEL_TOKEN
+            - vercel deploy --prebuilt --prod --token=$VERCEL_TOKEN
