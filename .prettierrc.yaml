@@ -1,0 +1,6 @@
+semi: true # Adiciona ponto e vírgula no final das instruções
+singleQuote: true # Usa aspas simples ao invés de aspas duplas
+trailingComma: es5 # Adiciona vírgula ao final de objetos e arrays (ES5+)
+printWidth: 80 # Limita as linhas a 80 caracteres
+tabWidth: 2 # Usa dois espaços por indentação
+arrowParens: always # Sempre usa parênteses em arrow functions
